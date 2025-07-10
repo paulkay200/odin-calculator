@@ -29,4 +29,18 @@ function divide(quotient) {
 }
 
 
+let initialNumber = "";
+
+let operator = "";
+
+let secondNumber = "";
+
+
+
+
+
+
+
+
+
 
