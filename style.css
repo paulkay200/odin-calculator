@@ -104,6 +104,31 @@ body {
   flex: 1;
 }
 
+.number,
+.operator,
+.dot,
+.equal,
+.modulus-operator,
+.clear-display-result,
+.plus-minus {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 3px 0 #bbb;
+  transition: all 0.1s ease;
+}
+
+.number:active,
+.operator:active,
+.dot:active,
+.equal:active,
+.modulus-operator:active,
+.clear-display-result:active,
+.plus-minus:active {
+  box-shadow: 0 3px 0 #bbb;
+  transform: translateY(3px);
+  opacity: 0.8;
+}
 
 
 
