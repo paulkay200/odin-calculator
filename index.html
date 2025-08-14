@@ -9,7 +9,7 @@
     <meta name="author" content="Paul Li">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+     <script src="script.js" defer></script>
 
 </head>
 
@@ -21,6 +21,10 @@
     <main>
         <section class="container">
 
+            <div class="calculation">
+                <p class="calculation-result"></p>
+            </div>
+
             <div class="display">
                 <p class="display-result">0</p>
             </div>
@@ -29,37 +33,37 @@
             <div class="calculator">
 
                 <div class="first-row-buttons">
-                    <button>AC</button>
-                    <button>+/-</button>
-                    <button>%</button>
-                    <button>&divide;</button>
+                    <button class="clear-display-result">AC</button>
+                    <button class="plus-minus" data-operator="negate">±</button>
+                    <button class="modulus-operator" data-operator="%">%</button>
+                    <button class="operator" data-operator="÷">&divide;</button>
                 </div>
 
                 <div class="second-row-buttons">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>&times;</button>
+                    <button class="number">7</button>
+                    <button class="number">8</button>
+                    <button class="number">9</button>
+                    <button class="operator" data-operator="×">&times;</button>
                 </div>
 
                 <div class="third-row-buttons">
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>&minus;</button>
+                    <button class="number">4</button>
+                    <button class="number">5</button>
+                    <button class="number">6</button>
+                    <button class="operator" data-operator="-">&minus;</button>
                 </div>
 
                 <div class="fourth-row-buttons">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>&plus;</button>
+                    <button class="number">1</button>
+                    <button class="number">2</button>
+                    <button class="number">3</button>
+                    <button class="operator" data-operator="+">&plus;</button>
                 </div>
 
                 <div class="fifth-row-buttons">
-                    <button>0</button>
-                    <button>.</button>
-                    <button>&equals;</button>
+                    <button class="number">0</button>
+                    <button class="dot">.</button>
+                    <button class="equal" data-operator="=">&equals;</button>
                 </div>
             </div>
 
