@@ -35,3 +35,35 @@ body {
   overflow: hidden;
 }
 
+.calculation {
+  padding: 20px 20px 0px 20px;
+}
+
+.calculation-result {
+  min-height: 60px;
+  color: white;
+  padding: 25px 25px 25px 25px;
+  border-radius: 10px;
+  text-align: end;
+  font-size: 28px;
+  background-color: black;
+}
+
+.calculation-result::before {
+  content: "0";
+  visibility: hidden;
+}
+
+.display {
+  padding: 20px 20px 0px 20px;
+}
+
+.display-result {
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: end;
+  font-size: 28px;
+  background-color: black;
+}
+
