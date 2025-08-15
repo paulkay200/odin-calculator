@@ -136,3 +136,10 @@ modulusButton.addEventListener("click", function () {
   calculationCompleted = false;
 });
 
+dot.addEventListener("click", function () {
+  if (!displayResult.textContent.includes(".")) {
+    displayResult.textContent += ".";
+    isNewEntry = false;
+  }
+});
+
