@@ -39,3 +39,10 @@ function operate(operator, firstNumber, ...secondNumber) {
     return divide([firstNumber, ...secondNumber]);
   }
 }
+
+let firstNumber = null;
+let currentOperator = null;
+let secondNumber = null;
+let isNewEntry = false;
+let lastSecondNumber = null;
+let calculationCompleted = false;
