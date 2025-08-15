@@ -110,3 +110,29 @@ plusMinus.addEventListener("click", function () {
   calculationCompleted = false;
 });
 
+modulusButton.addEventListener("click", function () {
+  const currentValue = Number(displayResult.textContent) / 100;
+
+  if (calculationCompleted) {
+    firstNumber = currentValue;
+    currentOperator = null;
+    calculationCompleted = false;
+    displayResult.textContent = firstNumber;
+  } else if (currentOperator === null) {
+    firstNumber = currentValue;
+  } else {
+    secondNumber = currentValue;
+  }
+
+  displayResult.textContent = currentValue;
+
+  if (displayResult.textContent === "0") {
+    calculationResult.textContent = "";
+  } else {
+    calculationResult.textContent = "%";
+  }
+
+  isNewEntry = false;
+  calculationCompleted = false;
+});
+
