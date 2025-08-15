@@ -71,3 +71,19 @@ clearDisplay.addEventListener("click", function () {
   }
 });
 
+numberButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    if (calculationCompleted) {
+      firstNumber = null;
+      calculationCompleted = false;
+    }
+
+    if (isNewEntry === true || displayResult.textContent === "0") {
+      displayResult.textContent = button.textContent;
+      isNewEntry = false;
+    } else {
+      displayResult.textContent += button.textContent;
+    }
+  });
+});
+
