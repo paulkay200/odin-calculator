@@ -87,3 +87,26 @@ numberButtons.forEach(function (button) {
   });
 });
 
+plusMinus.addEventListener("click", function () {
+  const currentValue = Number(displayResult.textContent) * -1;
+
+  if (currentValue === -0) {
+    currentValue = 0;
+  }
+
+  if (calculationCompleted) {
+    firstNumber = currentValue;
+    currentOperator = null;
+    calculationCompleted = false;
+    displayResult.textContent = firstNumber;
+  } else if (currentOperator === null) {
+    firstNumber = currentValue;
+  } else {
+    secondNumber = currentValue;
+  }
+
+  displayResult.textContent = currentValue;
+  isNewEntry = false;
+  calculationCompleted = false;
+});
+
