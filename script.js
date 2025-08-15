@@ -56,3 +56,18 @@ const plusMinus = document.querySelector(".plus-minus");
 const modulusButton = document.querySelector(".modulus-operator");
 const dot = document.querySelector(".dot");
 const equalButton = document.querySelector(".equal");
+
+clearDisplay.addEventListener("click", function () {
+  firstNumber = null;
+  secondNumber = null;
+  currentOperator = null;
+  isNewEntry = false;
+  calculationCompleted = false;
+  lastSecondNumber = null;
+  displayResult.textContent = "0";
+
+   if (displayResult.textContent === "0") {
+    calculationResult.textContent = "";
+  }
+});
+
