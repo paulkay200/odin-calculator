@@ -32,6 +32,7 @@ body {
   margin: 0 auto;
   background-color: rgb(44, 42, 40);
   border-radius: 10px;
+  box-shadow: 0 5px 0 #bbb;
   overflow: hidden;
 }
 
