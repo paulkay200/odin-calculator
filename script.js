@@ -46,3 +46,13 @@ let secondNumber = null;
 let isNewEntry = false;
 let lastSecondNumber = null;
 let calculationCompleted = false;
+
+const displayResult = document.querySelector(".display-result");
+const calculationResult = document.querySelector(".calculation-result");
+const clearDisplay = document.querySelector(".clear-display-result");
+const numberButtons = document.querySelectorAll(".number");
+const operatorButtons = document.querySelectorAll(".operator");
+const plusMinus = document.querySelector(".plus-minus");
+const modulusButton = document.querySelector(".modulus-operator");
+const dot = document.querySelector(".dot");
+const equalButton = document.querySelector(".equal");
