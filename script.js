@@ -167,3 +167,43 @@ operatorButtons.forEach(function (button) {
     calculationCompleted = false;
   });
 });
+
+equalButton.addEventListener("click", function () {
+  if (currentOperator) {
+    let result;
+
+    if (firstNumber === null) {
+      firstNumber = Number(displayResult.textContent); // 6
+      if (lastSecondNumber !== null) {
+        // 3
+        result = operate(currentOperator, firstNumber, lastSecondNumber); // 6 + 3
+      } else {
+        result = firstNumber;
+      }
+    } else {
+      if (!isNewEntry) {
+        secondNumber = Number(displayResult.textContent);
+        lastSecondNumber = secondNumber;
+      } else {
+        if (lastSecondNumber !== null) {
+          secondNumber = lastSecondNumber;
+        }
+      }
+
+      if (secondNumber !== null) {
+        result = operate(currentOperator, firstNumber, secondNumber);
+      } else {
+        result = firstNumber;
+      }
+    }
+
+    firstNumber = result;
+    displayResult.textContent = result;
+
+    isNewEntry = true;
+    calculationCompleted = true;
+  } else {
+    calculationCompleted = true;
+    isNewEntry = true;
+  }
+});
