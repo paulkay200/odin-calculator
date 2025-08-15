@@ -143,3 +143,27 @@ dot.addEventListener("click", function () {
   }
 });
 
+operatorButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    const newOperator = button.getAttribute("data-operator");
+
+    if (currentOperator && isNewEntry === false) {
+      secondNumber = Number(displayResult.textContent);
+      lastSecondNumber = Number(displayResult.textContent);
+
+      const result = operate(currentOperator, firstNumber, secondNumber);
+
+      displayResult.textContent = result;
+      firstNumber = result;
+    } else {
+      firstNumber = Number(displayResult.textContent);
+    }
+
+    currentOperator = newOperator;
+
+    calculationResult.textContent = currentOperator;
+
+    isNewEntry = true;
+    calculationCompleted = false;
+  });
+});
