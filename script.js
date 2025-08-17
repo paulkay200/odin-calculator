@@ -66,7 +66,7 @@ clearDisplay.addEventListener("click", function () {
   lastSecondNumber = null;
   displayResult.textContent = "0";
 
-   if (displayResult.textContent === "0") {
+  if (displayResult.textContent === "0") {
     calculationResult.textContent = "";
   }
 });
@@ -132,6 +132,8 @@ modulusButton.addEventListener("click", function () {
     calculationResult.textContent = "%";
   }
 
+ 
+
   isNewEntry = false;
   calculationCompleted = false;
 });
@@ -173,10 +175,10 @@ equalButton.addEventListener("click", function () {
     let result;
 
     if (firstNumber === null) {
-      firstNumber = Number(displayResult.textContent); // 6
+      firstNumber = Number(displayResult.textContent); 
       if (lastSecondNumber !== null) {
-        // 3
-        result = operate(currentOperator, firstNumber, lastSecondNumber); // 6 + 3
+        
+        result = operate(currentOperator, firstNumber, lastSecondNumber);
       } else {
         result = firstNumber;
       }
@@ -207,3 +209,17 @@ equalButton.addEventListener("click", function () {
     isNewEntry = true;
   }
 });
+
+const keyMap = {
+  Escape: "AC",
+  F9: "±",
+  "+": "+",
+  "-": "−",
+  "*": "×",
+  "/": "÷",
+  "%": "%",
+  ".": ".",
+  NumpadDivide: "÷",
+  Enter: "=",
+  NumpadEnter: "=",
+};
