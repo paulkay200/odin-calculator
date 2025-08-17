@@ -223,3 +223,40 @@ const keyMap = {
   Enter: "=",
   NumpadEnter: "=",
 };
+
+document.addEventListener("keydown", function (event) {
+  if (keyMap[event.key] === "AC") {
+    clearDisplay.click();
+  }
+
+  if (keyMap[event.key] === "±") {
+    plusMinus.click();
+  }
+
+  numberButtons.forEach(function (button) {
+    if (button.textContent === event.key) {
+      button.click();
+    }
+  });
+
+  operatorButtons.forEach(function (button) {
+    if (
+      button.textContent === event.key ||
+      button.textContent === keyMap[event.key]
+    ) {
+      button.click();
+    }
+  });
+
+  if (keyMap[event.key] === "%") {
+    modulusButton.click();
+  }
+
+  if (keyMap[event.key] === "=") {
+    equalButton.click();
+  }
+
+  if (keyMap[event.key] === ".") {
+    dot.click();
+  }
+});
