@@ -202,6 +202,9 @@ equalButton.addEventListener("click", function () {
     firstNumber = result;
     displayResult.textContent = result;
 
+
+
+
     isNewEntry = true;
     calculationCompleted = true;
   } else {
@@ -241,7 +244,6 @@ document.addEventListener("keydown", function (event) {
 
   operatorButtons.forEach(function (button) {
     if (
-      button.textContent === event.key ||
       button.textContent === keyMap[event.key]
     ) {
       button.click();
