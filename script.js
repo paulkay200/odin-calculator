@@ -55,6 +55,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 const plusMinus = document.querySelector(".plus-minus");
 const modulusButton = document.querySelector(".modulus-operator");
 const dot = document.querySelector(".dot");
+const backSpaceButton = document.querySelector(".backspace");
 const equalButton = document.querySelector(".equal");
 
 clearDisplay.addEventListener("click", function () {
@@ -211,6 +212,30 @@ equalButton.addEventListener("click", function () {
     calculationCompleted = true;
     isNewEntry = true;
   }
+});
+
+backSpaceButton.addEventListener("click", function () {
+  let currentValue = displayResult.textContent;
+
+  let newValue = currentValue.slice(0, -1);
+
+  if (calculationCompleted) {
+    firstNumber = Number(newValue);
+    currentOperator = null;
+    calculationCompleted = false;
+  } else if (currentOperator === null) {
+    firstNumber = Number(newValue);
+  } else if (isNewEntry === false) {
+    secondNumber = Number(newValue);
+  }
+
+  if (newValue === "") {
+    newValue = "0";
+  }
+
+  displayResult.textContent = newValue;
+
+  isNewEntry = false;
 });
 
 const keyMap = {
