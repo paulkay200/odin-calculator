@@ -196,6 +196,12 @@ equalButton.addEventListener("click", function () {
       }
     }
 
+    if (result.toString().length > 15) {
+      displayResult.textContent = result.toExponential(12);
+    } else {
+      displayResult.textContent = result;
+    }
+
     firstNumber = result;
     displayResult.textContent = result;
 
