@@ -97,21 +97,14 @@ body {
   border-radius: 10px;
 }
 
-.fifth-row-buttons button:first-child {
-  flex: 0 0 49%;
-}
-
-.fifth-row-buttons button:nth-child(2) {
-  flex: 1;
-}
-
 .number,
 .operator,
 .dot,
 .equal,
 .modulus-operator,
 .clear-display-result,
-.plus-minus {
+.plus-minus,
+.backspace {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
