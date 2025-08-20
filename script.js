@@ -132,8 +132,6 @@ modulusButton.addEventListener("click", function () {
     calculationResult.textContent = "%";
   }
 
- 
-
   isNewEntry = false;
   calculationCompleted = false;
 });
@@ -175,9 +173,8 @@ equalButton.addEventListener("click", function () {
     let result;
 
     if (firstNumber === null) {
-      firstNumber = Number(displayResult.textContent); 
+      firstNumber = Number(displayResult.textContent);
       if (lastSecondNumber !== null) {
-        
         result = operate(currentOperator, firstNumber, lastSecondNumber);
       } else {
         result = firstNumber;
@@ -202,9 +199,6 @@ equalButton.addEventListener("click", function () {
     firstNumber = result;
     displayResult.textContent = result;
 
-
-
-
     isNewEntry = true;
     calculationCompleted = true;
   } else {
@@ -228,11 +222,12 @@ const keyMap = {
 };
 
 document.addEventListener("keydown", function (event) {
-  if (keyMap[event.key] === "AC") {
+  if (event.key === "Escape") {
+    event.preventDefault();
     clearDisplay.click();
   }
 
-  if (keyMap[event.key] === "±") {
+  if (event.key === "F9") {
     plusMinus.click();
   }
 
@@ -243,9 +238,7 @@ document.addEventListener("keydown", function (event) {
   });
 
   operatorButtons.forEach(function (button) {
-    if (
-      button.textContent === keyMap[event.key]
-    ) {
+    if (button.textContent === keyMap[event.key]) {
       button.click();
     }
   });
