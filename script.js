@@ -54,7 +54,7 @@ const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const plusMinus = document.querySelector(".plus-minus");
 const modulusButton = document.querySelector(".modulus-operator");
-const dot = document.querySelector(".dot");
+const decimalButton = document.querySelector(".dot");
 const backSpaceButton = document.querySelector(".backspace");
 const equalButton = document.querySelector(".equal");
 
@@ -71,7 +71,7 @@ clearDisplay.addEventListener("click", function () {
     calculationResult.textContent = "";
   }
 
-  this.blur()
+  this.blur();
 });
 
 numberButtons.forEach(function (button) {
@@ -88,7 +88,7 @@ numberButtons.forEach(function (button) {
       displayResult.textContent += button.textContent;
     }
 
-    this.blur()
+    this.blur();
   });
 });
 
@@ -114,7 +114,7 @@ plusMinus.addEventListener("click", function () {
   isNewEntry = false;
   calculationCompleted = false;
 
-  this.blur()
+  this.blur();
 });
 
 modulusButton.addEventListener("click", function () {
@@ -133,6 +133,7 @@ modulusButton.addEventListener("click", function () {
 
   displayResult.textContent = currentValue;
 
+
   if (displayResult.textContent === "0") {
     calculationResult.textContent = "";
   } else {
@@ -142,16 +143,27 @@ modulusButton.addEventListener("click", function () {
   isNewEntry = false;
   calculationCompleted = false;
 
-  this.blur()
-});
-
-dot.addEventListener("click", function () {
-  if (!displayResult.textContent.includes(".")) {
-    displayResult.textContent += ".";
-    isNewEntry = false;
+  if (displayResult.textContent === "0") {
+    calculationResult.textContent = "";
+  } else {
+    calculationResult.textContent = "%";
   }
 
-  this.blur()
+  isNewEntry = false;
+  calculationCompleted = false;
+
+  this.blur();
+});
+
+decimalButton.addEventListener("click", function () {
+  if (isNewEntry) {
+    displayResult.textContent = "0.";
+    isNewEntry = false;
+  } else if (!displayResult.textContent.includes(".")) {
+    displayResult.textContent += ".";
+  }
+
+  this.blur();
 });
 
 operatorButtons.forEach(function (button) {
@@ -177,7 +189,7 @@ operatorButtons.forEach(function (button) {
     isNewEntry = true;
     calculationCompleted = false;
 
-    this.blur()
+    this.blur();
   });
 });
 
@@ -209,14 +221,14 @@ equalButton.addEventListener("click", function () {
       }
     }
 
-    if (result.toString().length > 15) {
+    firstNumber = result;
+    displayResult.textContent = result;
+
+    if (Math.abs(result) >= 1e15 || Math.abs(result) < 1e-12) {
       displayResult.textContent = result.toExponential(12);
     } else {
       displayResult.textContent = result;
     }
-
-    firstNumber = result;
-    displayResult.textContent = result;
 
     isNewEntry = true;
     calculationCompleted = true;
@@ -225,7 +237,7 @@ equalButton.addEventListener("click", function () {
     isNewEntry = true;
   }
 
-  this.blur()
+  this.blur();
 });
 
 backSpaceButton.addEventListener("click", function () {
@@ -251,7 +263,7 @@ backSpaceButton.addEventListener("click", function () {
 
   isNewEntry = false;
 
-  this.blur()
+  this.blur();
 });
 
 const keyMap = {
@@ -282,7 +294,6 @@ document.addEventListener("keydown", function (event) {
   numberButtons.forEach(function (button) {
     if (button.textContent === event.key) {
       button.click();
-      event.preventDefault();
     }
   });
 
@@ -301,6 +312,7 @@ document.addEventListener("keydown", function (event) {
   }
 
   if (keyMap[event.key] === ".") {
-    dot.click();
+    decimalButton.click();
+    decimalButton.classList.add("dot:active");
   }
 });
