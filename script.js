@@ -70,6 +70,8 @@ clearDisplay.addEventListener("click", function () {
   if (displayResult.textContent === "0") {
     calculationResult.textContent = "";
   }
+
+  this.blur()
 });
 
 numberButtons.forEach(function (button) {
@@ -85,6 +87,8 @@ numberButtons.forEach(function (button) {
     } else {
       displayResult.textContent += button.textContent;
     }
+
+    this.blur()
   });
 });
 
@@ -109,6 +113,8 @@ plusMinus.addEventListener("click", function () {
   displayResult.textContent = currentValue;
   isNewEntry = false;
   calculationCompleted = false;
+
+  this.blur()
 });
 
 modulusButton.addEventListener("click", function () {
@@ -135,6 +141,8 @@ modulusButton.addEventListener("click", function () {
 
   isNewEntry = false;
   calculationCompleted = false;
+
+  this.blur()
 });
 
 dot.addEventListener("click", function () {
@@ -142,6 +150,8 @@ dot.addEventListener("click", function () {
     displayResult.textContent += ".";
     isNewEntry = false;
   }
+
+  this.blur()
 });
 
 operatorButtons.forEach(function (button) {
@@ -166,6 +176,8 @@ operatorButtons.forEach(function (button) {
 
     isNewEntry = true;
     calculationCompleted = false;
+
+    this.blur()
   });
 });
 
@@ -212,6 +224,8 @@ equalButton.addEventListener("click", function () {
     calculationCompleted = true;
     isNewEntry = true;
   }
+
+  this.blur()
 });
 
 backSpaceButton.addEventListener("click", function () {
@@ -236,6 +250,8 @@ backSpaceButton.addEventListener("click", function () {
   displayResult.textContent = newValue;
 
   isNewEntry = false;
+
+  this.blur()
 });
 
 const keyMap = {
@@ -253,7 +269,6 @@ const keyMap = {
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     clearDisplay.click();
-   
   }
 
   if (event.key === "F9") {
@@ -261,20 +276,19 @@ document.addEventListener("keydown", function (event) {
   }
 
   if (event.key === "Backspace") {
-    backSpaceButton.click()
+    backSpaceButton.click();
   }
 
   numberButtons.forEach(function (button) {
     if (button.textContent === event.key) {
       button.click();
-      event.preventDefault()
+      event.preventDefault();
     }
   });
 
   operatorButtons.forEach(function (button) {
     if (button.textContent === keyMap[event.key]) {
       button.click();
-
     }
   });
 
