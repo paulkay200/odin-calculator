@@ -133,21 +133,17 @@ modulusButton.addEventListener("click", function () {
 
   displayResult.textContent = currentValue;
 
-
   if (displayResult.textContent === "0") {
     calculationResult.textContent = "";
   } else {
     calculationResult.textContent = "%";
   }
 
-  isNewEntry = false;
-  calculationCompleted = false;
-
-  if (displayResult.textContent === "0") {
-    calculationResult.textContent = "";
-  } else {
-    calculationResult.textContent = "%";
-  }
+if (Math.abs(currentValue) >= 1e12 || Math.abs(currentValue) < 1e-9) {
+  displayResult.textContent = currentValue.toExponential(11);
+} else {
+  displayResult.textContent = currentValue;
+}
 
   isNewEntry = false;
   calculationCompleted = false;
@@ -224,8 +220,8 @@ equalButton.addEventListener("click", function () {
     firstNumber = result;
     displayResult.textContent = result;
 
-    if (Math.abs(result) >= 1e15 || Math.abs(result) < 1e-12) {
-      displayResult.textContent = result.toExponential(12);
+    if (Math.abs(result) >= 1e12 || Math.abs(result) < 1e-9) {
+      displayResult.textContent = result.toExponential(11);
     } else {
       displayResult.textContent = result;
     }
