@@ -135,17 +135,21 @@ modulusButton.addEventListener("click", function () {
 
   if (displayResult.textContent === "0") {
     calculationResult.textContent = "";
+    displayResult.textContent = "0"
   } else {
     calculationResult.textContent = "%";
   }
 
-if (Math.abs(currentValue) >= 1e12 || Math.abs(currentValue) < 1e-9) {
-  displayResult.textContent = currentValue.toExponential(11);
-} else {
-  displayResult.textContent = currentValue;
-}
+   if (Math.abs(currentValue) >= 1e12 || Math.abs(currentValue) < 1e-9) {
+    displayResult.textContent = currentValue.toExponential(11);
+   
+  } else {
+    displayResult.textContent = currentValue;
+  }
 
-  isNewEntry = false;
+ 
+
+  isNewEntry = true;
   calculationCompleted = false;
 
   this.blur();
@@ -277,38 +281,85 @@ const keyMap = {
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     clearDisplay.click();
+    clearDisplay.classList.add("active")
   }
 
   if (event.key === "F9") {
     plusMinus.click();
+    plusMinus.classList.add("active")
   }
 
   if (event.key === "Backspace") {
     backSpaceButton.click();
+    backSpaceButton.classList.add("active")
   }
 
   numberButtons.forEach(function (button) {
     if (button.textContent === event.key) {
       button.click();
+      button.classList.add("active")
     }
   });
 
   operatorButtons.forEach(function (button) {
     if (button.textContent === keyMap[event.key]) {
       button.click();
+      button.classList.add("active")
     }
   });
 
   if (keyMap[event.key] === "%") {
     modulusButton.click();
+    modulusButton.classList.add("active")
   }
 
   if (keyMap[event.key] === "=") {
     equalButton.click();
+    equalButton.classList.add("active")
+  }
+
+  if (keyMap[event.key] === "." || event.key === "Decimal") {
+    decimalButton.click();
+    decimalButton.classList.add("active")
+  }
+});
+
+
+document.addEventListener("keyup", function (event) {
+  if (event.key === "Escape") {
+   clearDisplay.classList.remove("active")
+  }
+
+  if (event.key === "F9") {
+  plusMinus.classList.remove("active")
+  }
+
+  if (event.key === "Backspace") {
+   backSpaceButton.classList.remove("active")
+  }
+
+  numberButtons.forEach(function (button) {
+    if (button.textContent === event.key) {
+     button.classList.remove("active")
+    }
+  });
+
+  operatorButtons.forEach(function (button) {
+    if (button.textContent === keyMap[event.key]) {
+    button.classList.remove("active")
+    }
+  });
+
+  if (keyMap[event.key] === "%") {
+   modulusButton.classList.remove("active")
+  }
+
+  if (keyMap[event.key] === "=") {
+    equalButton.classList.remove("active")
   }
 
   if (keyMap[event.key] === ".") {
-    decimalButton.click();
-    decimalButton.classList.add("dot:active");
+    decimalButton.classList.remove("active")
   }
 });
+
