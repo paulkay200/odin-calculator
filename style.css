@@ -34,6 +34,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 5px 0 #bbb;
   overflow: hidden;
+  margin-bottom: 30px;
 }
 
 .calculation {
@@ -125,5 +126,10 @@ body {
   opacity: 0.8;
 }
 
+footer {
+  background-color: #bbb;
+  text-align: center;
+  padding: 20px 0;
+}
 
 
