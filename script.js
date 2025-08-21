@@ -142,11 +142,11 @@ modulusButton.addEventListener("click", function () {
 
   if (
     Math.abs(currentValue) >= 1e12 ||
-    (Math.abs(currentValue) < 1e-9 && displayResult.textContent === "0")
+    (Math.abs(currentValue) < 1e-9 && displayResult.textContent !== "0")
   ) {
     displayResult.textContent = currentValue.toExponential(11);
   } else {
-    displayResult.textContent = currentValue.toPrecision(8);
+    displayResult.textContent = currentValue.toFixed(16);
   }
 
   isNewEntry = true;
@@ -375,7 +375,7 @@ const buttons = [
 
 buttons.forEach(function (button) {
   button.addEventListener("mousedown", function (event) {
-    button.click();
+  
     button.classList.add("active");
   });
 
