@@ -113,14 +113,14 @@ body {
   transition: all 0.1s ease;
 }
 
-.number:active,
-.operator:active,
-.dot:active,
-.equal:active,
-.modulus-operator:active,
-.clear-display-result:active,
-.plus-minus:active,
-.backspace:active {
+.number.active,
+.operator.active,
+.dot.active,
+.equal.active,
+.modulus-operator.active,
+.clear-display-result.active,
+.plus-minus.active,
+.backspace.active {
   box-shadow: 0 3px 0 #bbb;
   transform: translateY(3px);
   opacity: 0.8;
