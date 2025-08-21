@@ -239,8 +239,6 @@ backSpaceButton.addEventListener("click", function () {
 });
 
 const keyMap = {
-  Escape: "AC",
-  F9: "±",
   "+": "+",
   "-": "−",
   "*": "×",
@@ -254,23 +252,29 @@ const keyMap = {
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
-    event.preventDefault();
     clearDisplay.click();
+   
   }
 
   if (event.key === "F9") {
     plusMinus.click();
   }
 
+  if (event.key === "Backspace") {
+    backSpaceButton.click()
+  }
+
   numberButtons.forEach(function (button) {
     if (button.textContent === event.key) {
       button.click();
+      event.preventDefault()
     }
   });
 
   operatorButtons.forEach(function (button) {
     if (button.textContent === keyMap[event.key]) {
       button.click();
+
     }
   });
 
