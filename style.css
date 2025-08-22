@@ -111,6 +111,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 3px 0 #bbb;
   transition: all 0.1s ease;
+  touch-action: manipulation;
 }
 
 .number.active,
