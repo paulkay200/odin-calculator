@@ -135,21 +135,25 @@ modulusButton.addEventListener("click", function () {
 
   if (displayResult.textContent === "0") {
     calculationResult.textContent = "";
-    displayResult.textContent = "0";
   } else {
     calculationResult.textContent = "%";
   }
 
-  if (
-    Math.abs(currentValue) >= 1e12 ||
-    (Math.abs(currentValue) < 1e-9 && displayResult.textContent !== "0")
-  ) {
+  if (displayResult.textContent === "0") {
+    displayResult.textContent = currentValue;
+  } else if (Math.abs(currentValue) >= 1e12 || Math.abs(currentValue) < 1e-9) {
     displayResult.textContent = currentValue.toExponential(11);
-  } else {
-    displayResult.textContent = currentValue.toFixed(16);
+  } else if (
+    !(
+      Math.abs(currentValue) >= 1e12 ||
+      (Math.abs(currentValue) < 1e-9 && displayResult.textContent !== "0")
+    )
+  ) {
+    displayResult.textContent = currentValue.toPrecision(12);
   }
 
   isNewEntry = true;
+
   calculationCompleted = false;
 
   this.blur();
@@ -224,10 +228,13 @@ equalButton.addEventListener("click", function () {
     firstNumber = result;
     displayResult.textContent = result;
 
-    if (Math.abs(result) >= 1e12 || Math.abs(result) < 1e-9) {
+    let maxDigits = 12;
+    let resultStr = result.toString();
+
+    if (resultStr.length > maxDigits) {
       displayResult.textContent = result.toExponential(11);
     } else {
-      displayResult.textContent = result;
+      displayResult.textContent = resultStr;
     }
 
     isNewEntry = true;
@@ -375,7 +382,6 @@ const buttons = [
 
 buttons.forEach(function (button) {
   button.addEventListener("mousedown", function (event) {
-  
     button.classList.add("active");
   });
 
