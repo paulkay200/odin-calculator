@@ -76,6 +76,8 @@ clearDisplay.addEventListener("click", function () {
 
 numberButtons.forEach(function (button) {
   button.addEventListener("click", function () {
+    let maxDigits = 17;
+
     if (calculationCompleted) {
       firstNumber = null;
       calculationCompleted = false;
@@ -85,7 +87,9 @@ numberButtons.forEach(function (button) {
       displayResult.textContent = button.textContent;
       isNewEntry = false;
     } else {
-      displayResult.textContent += button.textContent;
+      if (displayResult.textContent.length < maxDigits) {
+        displayResult.textContent += button.textContent;
+      }
     }
 
     this.blur();
