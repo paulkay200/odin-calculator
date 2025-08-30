@@ -76,7 +76,7 @@ clearDisplay.addEventListener("click", function () {
 
 numberButtons.forEach(function (button) {
   button.addEventListener("click", function () {
-    let maxDigits = 17;
+    let maxDigits = 16;
 
     if (calculationCompleted) {
       firstNumber = null;
@@ -153,7 +153,7 @@ modulusButton.addEventListener("click", function () {
       (Math.abs(currentValue) < 1e-9 && displayResult.textContent !== "0")
     )
   ) {
-    displayResult.textContent = currentValue.toPrecision(12);
+    displayResult.textContent = currentValue.toPrecision(11);
   }
 
   isNewEntry = true;
