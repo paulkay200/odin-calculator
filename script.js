@@ -220,6 +220,8 @@ equalButton.addEventListener("click", function () {
       } else {
         if (lastSecondNumber !== null) {
           secondNumber = lastSecondNumber;
+        } else {
+          secondNumber = firstNumber;
         }
       }
 
