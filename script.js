@@ -92,6 +92,10 @@ numberButtons.forEach(function (button) {
       }
     }
 
+    if (calculationResult.textContent === "%") {
+      calculationResult.textContent = "";
+    }
+
     this.blur();
   });
 });
@@ -138,12 +142,6 @@ modulusButton.addEventListener("click", function () {
   displayResult.textContent = currentValue;
 
   if (displayResult.textContent === "0") {
-    calculationResult.textContent = "";
-  } else {
-    calculationResult.textContent = "%";
-  }
-
-  if (displayResult.textContent === "0") {
     displayResult.textContent = currentValue;
   } else if (Math.abs(currentValue) >= 1e12 || Math.abs(currentValue) < 1e-9) {
     displayResult.textContent = currentValue.toExponential(11);
@@ -156,6 +154,12 @@ modulusButton.addEventListener("click", function () {
     displayResult.textContent = currentValue.toPrecision(11);
   }
 
+  if (displayResult.textContent === "0") {
+    calculationResult.textContent = "";
+  } else {
+    calculationResult.textContent = "%";
+  }
+
   isNewEntry = true;
 
   calculationCompleted = false;
@@ -164,10 +168,7 @@ modulusButton.addEventListener("click", function () {
 });
 
 decimalButton.addEventListener("click", function () {
-  if (isNewEntry) {
-    displayResult.textContent = "0.";
-    isNewEntry = false;
-  } else if (!displayResult.textContent.includes(".")) {
+  if (!displayResult.textContent.includes(".")) {
     displayResult.textContent += ".";
   }
 
@@ -213,7 +214,7 @@ equalButton.addEventListener("click", function () {
         result = firstNumber;
       }
     } else {
-      if (!isNewEntry) {
+      if (isNewEntry === false) {
         secondNumber = Number(displayResult.textContent);
         lastSecondNumber = secondNumber;
       } else {
@@ -272,7 +273,17 @@ backSpaceButton.addEventListener("click", function () {
 
   displayResult.textContent = newValue;
 
-  isNewEntry = false;
+  if (
+    calculationResult.textContent === "+" ||
+    calculationResult.textContent === "-" ||
+    calculationResult.textContent === "×" ||
+    calculationResult.textContent === "÷" ||
+    calculationResult.textContent === "%"
+  ) {
+    calculationResult.textContent = "";
+  }
+
+  isNewEntry = true;
 
   this.blur();
 });
